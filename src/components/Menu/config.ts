@@ -12,11 +12,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'https://cacaodefi.finance',
+        href: 'https://exchange.cacaodefi.finance/',
       },
       {
         label: 'Liquidity',
-        href: 'https://cacaodefi.finance/#/pool',
+        href: 'https://exchange.cacaodefi.finance/#/pool',
       },
     ],
   },

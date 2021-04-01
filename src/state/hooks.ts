@@ -210,16 +210,21 @@ export const usePriceCakeBusd = (): BigNumber => {
 export const GetTVL2 = () => {
   const cakeBnbFarm = useSelector((state: State) => state.farms.data.find((f) => f.pid === 1))
   const bnbBusdFarm = useSelector((state: State) => state.farms.data.find((f) => f.pid === 2))
-
-  const prices = useGetApiPrices()
-  const quoteTokenPriceUsd1 = prices[cakeBnbFarm.quoteToken.symbol.toLowerCase()]
-  const totalLiquidity1 = new BigNumber(cakeBnbFarm.lpTotalInQuoteToken).times(quoteTokenPriceUsd1)
-  const quoteTokenPriceUsd2 = prices[bnbBusdFarm.quoteToken.symbol.toLowerCase()]
-  const totalLiquidity2 = new BigNumber(bnbBusdFarm.lpTotalInQuoteToken).times(quoteTokenPriceUsd2)
-
   const pools = useSelector((state: State) => state.pools.data)
-  const r = getBalanceNumber(pools[0].totalStaked, pools[0].stakingToken.decimals)
-  return r + totalLiquidity1.toNumber() + totalLiquidity2.toNumber();
+  const prices = useGetApiPrices()
+  const cacaov = useGetApiPrice("CACAO")
+  if(prices != null)
+  {
+    const quoteTokenPriceUsd1 = prices[cakeBnbFarm.quoteToken.symbol.toLowerCase()]
+    const totalLiquidity1 = new BigNumber(cakeBnbFarm.lpTotalInQuoteToken).times(quoteTokenPriceUsd1)
+    const quoteTokenPriceUsd2 = prices[bnbBusdFarm.quoteToken.symbol.toLowerCase()]
+    const totalLiquidity2 = new BigNumber(bnbBusdFarm.lpTotalInQuoteToken).times(quoteTokenPriceUsd2)
+    
+    const r = getBalanceNumber(pools[0].totalStaked, pools[0].stakingToken.decimals)
+    const result = cacaov * r
+    return ( result + totalLiquidity1.toNumber() + totalLiquidity2.toNumber() ) .toFixed(3);
+  }
+  return "0";
 }
 
 

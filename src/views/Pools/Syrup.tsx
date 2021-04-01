@@ -45,7 +45,6 @@ const Farm: React.FC = () => {
             <li>{TranslateString(406, 'Rewards are calculated per block.')}</li>
           </ul>
         </div>
-        <img src="/images/syrup.png" alt="SYRUP POOL icon" width={410} height={191} />
       </Hero>
       <PoolTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly} />
       <FlexLayout>
@@ -54,7 +53,7 @@ const Farm: React.FC = () => {
             {stakedOnly
               ? orderBy(stakedOnlyPools, ['sortOrder']).map((pool) => <PoolCard key={pool.sousId} pool={pool} />)
               : orderBy(openPools, ['sortOrder']).map((pool) => <PoolCard key={pool.sousId} pool={pool} />)}
-            
+
           </>
         </Route>
         <Route path={`${path}/history`}>
@@ -71,7 +70,7 @@ const Hero = styled.div`
   align-items: center;
   text-align: center;
   color: ${({ theme }) => theme.colors.primary};
-  display: grid;
+  display: ;
   grid-gap: 32px;
   grid-template-columns: 1fr;
   margin-left: auto;

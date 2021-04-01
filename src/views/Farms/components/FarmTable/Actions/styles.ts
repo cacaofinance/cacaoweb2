@@ -34,7 +34,7 @@ export const Title = styled.span`
 `
 
 export const Subtle = styled.span`
-  color: ${({ theme }) => theme.colors.textSubtle};
+  color: "#000";
 `
 
 export const ActionContent = styled.div`
@@ -50,5 +50,5 @@ export const Earned = styled.div`
 
 export const Staked = styled.div`
   font-size: 12px;
-  color: ${({ theme }) => theme.colors.textSubtle};
+  color: "#000";
 `
